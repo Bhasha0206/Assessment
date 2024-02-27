@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .image-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background-color: #f4f4f4;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .image-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .image-item p {
+            margin: 0;
+            padding: 5px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Image Gallery</h1>
+        <div class="image-grid">
+        </div>
+    </div>
+    <script>
+
+        const images = [
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg", "name": "Virat Kohli", "role": "Indian Batsman" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+11", "name": "Name11", "role": "Role11" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+12", "name": "Name12", "role": "Role12" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+13", "name": "Name13", "role": "Role13" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+14", "name": "Name14", "role": "Role14" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+15", "name": "Name15", "role": "Role15" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+16", "name": "Name16", "role": "Role16" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+17", "name": "Name17", "role": "Role17" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+18", "name": "Name18", "role": "Role18" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+19", "name": "Name19", "role": "Role19" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+20", "name": "Name20", "role": "Role20" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+21", "name": "Name21", "role": "Role21" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+22", "name": "Name22", "role": "Role22" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+23", "name": "Name23", "role": "Role23" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+24", "name": "Name24", "role": "Role24" },
+            { "image": "https://via.placeholder.com/200x200?text=Image+25", "name": "Name25", "role": "Role25" }
+        ];
+
+        const imageGrid = document.querySelector('.image-grid');
+        images.forEach(image => {
+            const imageItem = document.createElement('div');
+            imageItem.classList.add('image-item');
+            const img = document.createElement('img');
+            img.src = image.image;
+            img.loading = 'lazy';
+            imageItem.appendChild(img);
+            const name = document.createElement('p');
+            name.textContent = image.name;
+            imageItem.appendChild(name);
+            const role = document.createElement('p');
+            role.textContent = image.role;
+            imageItem.appendChild(role);
+            imageGrid.appendChild(imageItem);
+        });
+
+    </script>
+</body>
+
+</html>
